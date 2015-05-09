@@ -15,26 +15,23 @@ class SwiftWarsCharacter {
     var name: String = ""
     var alias: String = ""
     var wikiURL: Optional<NSURL>
-    var soundData: Optional<NSData>
+    var soundURL: Optional<NSURL>
     var photo: Optional<UIImage>
     
     // Inits
     init () {}
     
-    init (name: String, alias: String, wikiURL: NSURL?, soundData: NSData?, photo: UIImage?){
+    init (name: String, alias: String, wikiURL: NSURL?, soundURL: NSURL?, photo: UIImage?){
         self.name = name
         self.alias = alias
         self.wikiURL = wikiURL
-        self.soundData = soundData
+        self.soundURL = soundURL
         self.photo = photo
     }
     
-    convenience init (alias: String, wikiURL: NSURL?, soundData: NSData?, photo: UIImage?){
-        self.init()
-        self.alias = alias
-        self.wikiURL = wikiURL
-        self.soundData = soundData
-        self.photo = photo
+    convenience init (alias: String, wikiURL: NSURL?, soundURL: NSURL?, photo: UIImage?){
+        self.init(name: "", alias: alias, wikiURL: wikiURL, soundURL: soundURL, photo: photo)
+        
     }
 }
     
@@ -51,9 +48,7 @@ class SwiftWarsUniverse {
         // VADER
         let vaderURL = NSURL(string: "http://en.wikipedia.org/wiki/Darth_Vader")
         
-        let path = NSBundle.mainBundle().URLForResource("SwiftWars/vader", withExtension: "caf")
-        let vaderSoundData2 = NSData(contentsOfURL: path!)
-        let vaderSoundData = NSData(contentsOfFile: "vader.caf")
+        let vaderSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("vader", ofType: "caf")!)
 
         
         // OJO REVISAR ESTO QUE LO HE PUESTO EN PMODO SUICIDA
@@ -61,20 +56,21 @@ class SwiftWarsUniverse {
         let vaderPhotoImage = UIImage(named: "darthVader.jpg")
         
             
-        let vader = SwiftWarsCharacter(name: "Anakin Skywalker", alias: "Darth Vader", wikiURL: vaderURL, soundData: vaderSoundData, photo: vaderPhotoImage)
+        let vader = SwiftWarsCharacter(name: "Anakin Skywalker", alias: "Darth Vader", wikiURL: vaderURL, soundURL: vaderSoundURL, photo: vaderPhotoImage)
         
         
-        // VADER
+        // CHEWBACCA
         let chewieURL = NSURL(string: "http://en.wikipedia.org/wiki/Chewbacca")
         
-        let chewieSoundData = NSData(contentsOfFile: "chewbacca.caf")
+        let chewieSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("chewbacca", ofType: "caf")!)
+
         
         // OJO REVISAR ESTO QUE LO HE PUESTO EN PMODO SUICIDA
 //        let chewiePhotoData = NSData(contentsOfFile: "chewbacca.jpg")
         let chewiePhotoImage = UIImage(named: "chewbacca.jpg")
         
         
-        let chewie = SwiftWarsCharacter(alias: "Chewbacca", wikiURL: chewieURL, soundData: chewieSoundData, photo: chewiePhotoImage)
+        let chewie = SwiftWarsCharacter(alias: "Chewbacca", wikiURL: chewieURL, soundURL: chewieSoundURL, photo: chewiePhotoImage)
 
         
         rebels = [chewie]

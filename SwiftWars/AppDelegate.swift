@@ -16,8 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        SwiftWarsUniverse.init()
         
+        // Crear la Window
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+ 
+//        SwiftWarsUniverse.init()
+
+        
+        // Probamos a crear un personaje
+        // VADER
+        let vaderURL = NSURL(string: "http://en.wikipedia.org/wiki/Darth_Vader")
+        let vaderSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("vader", ofType: "caf")!)
+        // OJO REVISAR ESTO QUE LO HE PUESTO EN PMODO SUICIDA
+        //        let vaderPhotoData = NSData(contentsOfFile: "darthVader.jpg")
+        let vaderPhotoImage = UIImage(named: "darthVader.jpg")
+        let vader = SwiftWarsCharacter(name: "Anakin Skywalker", alias: "Darth Vader", wikiURL: vaderURL, soundURL: vaderSoundURL, photo: vaderPhotoImage)
+
+        
+        // Crear los controladores
+        var characterVC = CharacterViewController(model: vader)
+        
+        
+        // Asignamos rootVC
+        window?.rootViewController = characterVC
+        
+        // Mostramos 
+        window?.makeKeyAndVisible()
         
         return true
     }
