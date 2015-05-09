@@ -35,10 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Crear los controladores
         var characterVC = CharacterViewController(model: vader)
-        
+        var characterNav = UINavigationController(rootViewController: characterVC)
         
         // Asignamos rootVC
-        window?.rootViewController = characterVC
+        window?.rootViewController = characterNav
         
         // Mostramos 
         window?.makeKeyAndVisible()

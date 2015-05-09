@@ -21,18 +21,18 @@ class CharacterViewController: UIViewController, AVAudioPlayerDelegate {
         self.title = model.alias
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
+//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//    }
     
 //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 //        self.model = nil
 //    }
     
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    required init(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     
     @IBOutlet weak var photoView: UIImageView!
@@ -46,7 +46,7 @@ class CharacterViewController: UIViewController, AVAudioPlayerDelegate {
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.play()
-            println("Sonando")
+            //println("Sonando")
 //        }
         
     
@@ -54,6 +54,15 @@ class CharacterViewController: UIViewController, AVAudioPlayerDelegate {
     
     
     @IBAction func displayWiki(sender: AnyObject) {
+        
+        // Creamos un wikiVC
+        var wikiVC = WikiViewController()
+        if let theModel = model{
+            wikiVC = WikiViewController(model: theModel)
+        }
+        
+        // Hacemos push
+        navigationController?.pushViewController(wikiVC, animated: true)
     }
     
     override func viewWillAppear(animated: Bool) {

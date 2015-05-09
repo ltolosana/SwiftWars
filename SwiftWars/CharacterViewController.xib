@@ -33,7 +33,7 @@
                     </items>
                 </toolbar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="F7b-k1-HWE">
-                    <rect key="frame" x="0.0" y="64" width="768" height="916"/>
+                    <rect key="frame" x="0.0" y="54" width="768" height="916"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
             </subviews>

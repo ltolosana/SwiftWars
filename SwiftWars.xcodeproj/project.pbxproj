@@ -28,6 +28,8 @@
 		603FFA801AFE852B007D747D /* tarkin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 603FFA791AFE852B007D747D /* tarkin.caf */; };
 		603FFA811AFE852B007D747D /* vader.caf in Resources */ = {isa = PBXBuildFile; fileRef = 603FFA7A1AFE852B007D747D /* vader.caf */; };
 		603FFA821AFE852B007D747D /* yoda.caf in Resources */ = {isa = PBXBuildFile; fileRef = 603FFA7B1AFE852B007D747D /* yoda.caf */; };
+		603FFA851AFE912A007D747D /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603FFA831AFE912A007D747D /* WikiViewController.swift */; };
+		603FFA861AFE912A007D747D /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 603FFA841AFE912A007D747D /* WikiViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		603FFA791AFE852B007D747D /* tarkin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tarkin.caf; sourceTree = "<group>"; };
 		603FFA7A1AFE852B007D747D /* vader.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = vader.caf; sourceTree = "<group>"; };
 		603FFA7B1AFE852B007D747D /* yoda.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yoda.caf; sourceTree = "<group>"; };
+		603FFA831AFE912A007D747D /* WikiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
+		603FFA841AFE912A007D747D /* WikiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,8 @@
 			children = (
 				603FFA701AFE6213007D747D /* CharacterViewController.swift */,
 				603FFA711AFE6213007D747D /* CharacterViewController.xib */,
+				603FFA831AFE912A007D747D /* WikiViewController.swift */,
+				603FFA841AFE912A007D747D /* WikiViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 				603FFA5E1AFE0F47007D747D /* R2-D2.jpg in Resources */,
 				603FFA7D1AFE852B007D747D /* chewbacca.caf in Resources */,
 				603FFA811AFE852B007D747D /* vader.caf in Resources */,
+				603FFA861AFE912A007D747D /* WikiViewController.xib in Resources */,
 				603FFA821AFE852B007D747D /* yoda.caf in Resources */,
 				603FFA5F1AFE0F47007D747D /* tarkin.jpg in Resources */,
 				603FFA801AFE852B007D747D /* tarkin.caf in Resources */,
@@ -297,6 +304,7 @@
 			files = (
 				603FFA721AFE6213007D747D /* CharacterViewController.swift in Sources */,
 				603FFA501AFE0AD1007D747D /* SwiftWarsCharacter.swift in Sources */,
+				603FFA851AFE912A007D747D /* WikiViewController.swift in Sources */,
 				603FFA301AFE098C007D747D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
