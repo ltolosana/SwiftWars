@@ -20,25 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Crear la Window
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
  
-//        SwiftWarsUniverse.init()
-
-        
-        // Probamos a crear un personaje
-        // VADER
-        let vaderURL = NSURL(string: "http://en.wikipedia.org/wiki/Darth_Vader")
-        let vaderSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("vader", ofType: "caf")!)
-        // OJO REVISAR ESTO QUE LO HE PUESTO EN PMODO SUICIDA
-        //        let vaderPhotoData = NSData(contentsOfFile: "darthVader.jpg")
-        let vaderPhotoImage = UIImage(named: "darthVader.jpg")
-        let vader = SwiftWarsCharacter(name: "Anakin Skywalker", alias: "Darth Vader", wikiURL: vaderURL, soundURL: vaderSoundURL, photo: vaderPhotoImage)
+        // Creamos un modelo
+        let swUniverse = SwiftWarsUniverse.init()
 
         
         // Crear los controladores
-        var characterVC = CharacterViewController(model: vader)
-        var characterNav = UINavigationController(rootViewController: characterVC)
+        var universeVC = UniverseTableViewController(model: swUniverse, style: UITableViewStyle.Plain)
+        var universeNav = UINavigationController(rootViewController: universeVC)
         
         // Asignamos rootVC
-        window?.rootViewController = characterNav
+        window?.rootViewController = universeNav
         
         // Mostramos 
         window?.makeKeyAndVisible()
