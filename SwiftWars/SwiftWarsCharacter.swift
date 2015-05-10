@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class SwiftWarsCharacter {
+@objc class SwiftWarsCharacter {
     
     var name: String = ""
     var alias: String = ""

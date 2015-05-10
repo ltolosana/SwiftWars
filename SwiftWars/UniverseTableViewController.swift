@@ -8,12 +8,14 @@
 
 import UIKit
 
-class UniverseTableViewController: UITableViewController {
+class UniverseTableViewController: UITableViewController, UniverseTableViewControllerDelegate {
 
     let IMPERIAL_SECTION = 0
     let REBEL_SECTION = 1
  
     var model: SwiftWarsUniverse?
+    var delegate: UniverseTableViewControllerDelegate?
+    
     
     convenience init(model: SwiftWarsUniverse, style: UITableViewStyle){
         
@@ -123,15 +125,29 @@ class UniverseTableViewController: UITableViewController {
             }else{
                 character = myModel.rebelAtIndex(indexPath.row)
             }
-            
-            // Creamos el VC
-            var characterVC = CharacterViewController(model: character)
-            
-            //HAcemos push
-            navigationController?.pushViewController(characterVC, animated: true)
+         
+            //Comprobamos si tenemos un delegado que "entienda" ;-)
+            // Y si eso que trabaje
+            delegate?.universeTableViewController?(self, didSelectCharacter: character)
+     
         }
 
     }
+
+    // MARK: - UniverseTableViewControllerDelegate
+    func universeTableViewController(swvc: UniverseTableViewController, didSelectCharacter: SwiftWarsCharacter) -> Void
+{
+        
+        // Creamos el VC
+        var characterVC = CharacterViewController(model: didSelectCharacter)
+    
+        //Hacemos push
+        navigationController?.pushViewController(characterVC, animated: true)
+        
+    }
+
+    
+    
     
     
     

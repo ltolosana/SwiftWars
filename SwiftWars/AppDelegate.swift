@@ -28,8 +28,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var universeVC = UniverseTableViewController(model: swUniverse, style: UITableViewStyle.Plain)
         var universeNav = UINavigationController(rootViewController: universeVC)
         
+        var characterVC = CharacterViewController(model: swUniverse.imperialAtIndex(0))
+        var characterNav = UINavigationController(rootViewController: characterVC)
+        
+        
+        // Crear el combinador
+        var splitVC = UISplitViewController()
+        splitVC.viewControllers = [universeNav, characterNav]
+        
+        
+        // Asignar delegados
+        splitVC.delegate = characterVC
+        universeVC.delegate = characterVC
+        
+        
         // Asignamos rootVC
-        window?.rootViewController = universeNav
+        window?.rootViewController = splitVC
         
         // Mostramos 
         window?.makeKeyAndVisible()
