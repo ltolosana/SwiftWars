@@ -47,7 +47,31 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
         
         canLoad = false
     }
-
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        
+        // Paro y oculto el activity
+        activityView.hidden = true
+        activityView.stopAnimating()
+        
+        // Creamos el Alert Controller
+        var message = ""
+        if let alias = model?.alias{
+             message = "Error en la carga de la web de " + alias
+        }
+        
+        let alertController = UIAlertController(title: "Error en Wikipedia", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // Le metemos el boton de OK
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        
+        alertController.addAction(okAction)
+        
+        // Lo mostramos
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         return canLoad
