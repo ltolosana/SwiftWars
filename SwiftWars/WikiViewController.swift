@@ -46,7 +46,7 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    // MARK: - UIWebViewDelegate
+// MARK: - UIWebViewDelegate
     
     func webViewDidFinishLoad(webView: UIWebView) {
         
@@ -87,12 +87,11 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
     }
     
     
-    // MARK: - Notifications
+// MARK: - Notifications
     // CHARACTER_DID_CHANGE_NOTIFICATION_NAME
     @objc func notifyThatCharacterDidChange(notification: NSNotification) -> Void{
     
         // Sacamos el personaje
-//        var character : SwiftWarsCharacter
         if let userInfo :Dictionary<String, SwiftWarsCharacter> = notification.userInfo as? Dictionary<String, SwiftWarsCharacter>,
             let character = userInfo[CHARACTER_KEY]{
                 
@@ -100,13 +99,13 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
                 model = character
         }
         
-        
         // Sincronizamos modelo -> vista
         syncViewWithModel()
         
     }
     
-    // MARK: - Utils
+    
+// MARK: - Utils
     
     func syncViewWithModel() -> Void{
         
@@ -119,30 +118,5 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -21,35 +21,18 @@ class CharacterViewController: UIViewController, AVAudioPlayerDelegate, UISplitV
         self.title = model.alias
     }
     
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    }
-    
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//        self.model = nil
-//    }
-    
-//    required init(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     
     @IBOutlet weak var photoView: UIImageView!
     
     @IBAction func playSound(sender: AnyObject) {
         
-//        var error: NSError?
-        
-        audioPlayer = AVAudioPlayer(contentsOfURL: model!.soundURL, error: nil)
-//        if var player = audioPlayer{
+        if let myModel = model{
+            
+            audioPlayer = AVAudioPlayer(contentsOfURL: myModel.soundURL, error: nil)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.play()
-            //println("Sonando")
-//        }
-        
-    
+        }
     }
     
     
@@ -94,7 +77,7 @@ class CharacterViewController: UIViewController, AVAudioPlayerDelegate, UISplitV
     }
     
     
-    // MARK: - UniverseTableViewControllerDelegate
+// MARK: - UniverseTableViewControllerDelegate
     func universeTableViewController(swvc: UniverseTableViewController, didSelectCharacter: SwiftWarsCharacter) -> Void{
         
         // Actualizamos el modelo
@@ -115,28 +98,5 @@ class CharacterViewController: UIViewController, AVAudioPlayerDelegate, UISplitV
         }
     }
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
