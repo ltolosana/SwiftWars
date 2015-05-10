@@ -27,7 +27,10 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-                
+        
+        // Alta en notificacion
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: "notifyThatCharacterDidChange:", name: CHARACTER_DID_CHANGE_NOTIFICATION_NAME, object: nil)
         
         // Sincronizar vista con modelo
         syncViewWithModel()
@@ -36,6 +39,12 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
         self.browser.delegate = self
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Baja de las notificacion
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 
     // MARK: - UIWebViewDelegate
     
@@ -77,6 +86,25 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
         return canLoad
     }
     
+    
+    // MARK: - Notifications
+    // CHARACTER_DID_CHANGE_NOTIFICATION_NAME
+    @objc func notifyThatCharacterDidChange(notification: NSNotification) -> Void{
+    
+        // Sacamos el personaje
+//        var character : SwiftWarsCharacter
+        if let userInfo :Dictionary<String, SwiftWarsCharacter> = notification.userInfo as? Dictionary<String, SwiftWarsCharacter>,
+            let character = userInfo[CHARACTER_KEY]{
+                
+                // Actualizamos el modelo
+                model = character
+        }
+        
+        
+        // Sincronizamos modelo -> vista
+        syncViewWithModel()
+        
+    }
     
     // MARK: - Utils
     

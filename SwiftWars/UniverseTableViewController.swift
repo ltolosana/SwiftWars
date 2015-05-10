@@ -8,10 +8,14 @@
 
 import UIKit
 
+let CHARACTER_DID_CHANGE_NOTIFICATION_NAME = "characterDidChangeNotification"
+let CHARACTER_KEY = "characterKey"
+
 class UniverseTableViewController: UITableViewController, UniverseTableViewControllerDelegate {
 
     let IMPERIAL_SECTION = 0
     let REBEL_SECTION = 1
+    
  
     var model: SwiftWarsUniverse?
     var delegate: UniverseTableViewControllerDelegate?
@@ -130,6 +134,15 @@ class UniverseTableViewController: UITableViewController, UniverseTableViewContr
             // Y si eso que trabaje
             delegate?.universeTableViewController?(self, didSelectCharacter: character)
      
+            // Y tambien mando notificacion
+            let nc = NSNotificationCenter.defaultCenter()
+            
+            let dict: Dictionary = [CHARACTER_KEY: character]
+            
+            let n = NSNotification(name: CHARACTER_DID_CHANGE_NOTIFICATION_NAME, object: self, userInfo: dict as [NSObject : AnyObject])
+            
+            nc.postNotification(n)
+            
         }
 
     }
