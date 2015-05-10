@@ -23,12 +23,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Creamos un modelo
         let swUniverse = SwiftWarsUniverse.init()
 
+        // Detectamos el tipo de pantalla
+        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad{
+            
+            // Tipo iPad
+            configureForPadWithModel(swUniverse)
+        }else{
+            
+            // Tipo iPhone
+            configureForPhoneWithModel(swUniverse)
+        }
+        
+        
+        // Mostramos 
+        window?.makeKeyAndVisible()
+        
+        return true
+    }
+
+    
+    
+    func configureForPadWithModel(model: SwiftWarsUniverse){
         
         // Crear los controladores
-        var universeVC = UniverseTableViewController(model: swUniverse, style: UITableViewStyle.Plain)
+        var universeVC = UniverseTableViewController(model: model, style: UITableViewStyle.Plain)
         var universeNav = UINavigationController(rootViewController: universeVC)
         
-        var characterVC = CharacterViewController(model: swUniverse.imperialAtIndex(0))
+        var characterVC = CharacterViewController(model: model.imperialAtIndex(0))
         var characterNav = UINavigationController(rootViewController: characterVC)
         
         
@@ -44,13 +65,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Asignamos rootVC
         window?.rootViewController = splitVC
-        
-        // Mostramos 
-        window?.makeKeyAndVisible()
-        
-        return true
+
     }
 
+    func configureForPhoneWithModel(model: SwiftWarsUniverse){
+        
+        // Crear los controladores
+        var universeVC = UniverseTableViewController(model: model, style: UITableViewStyle.Plain)
+        var universeNav = UINavigationController(rootViewController: universeVC)
+                
+        
+        // Asignar delegados
+        universeVC.delegate = universeVC
+        
+        
+        // Asignamos rootVC
+        window?.rootViewController = universeNav
+
+        
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
