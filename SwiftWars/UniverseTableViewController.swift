@@ -11,12 +11,13 @@ import UIKit
 let CHARACTER_DID_CHANGE_NOTIFICATION_NAME = "characterDidChangeNotification"
 let CHARACTER_KEY = "characterKey"
 
+let LAST_SELECTED_CHARACTER = "lastCharacter"
+
+let IMPERIAL_SECTION = 0
+let REBEL_SECTION = 1
+
 class UniverseTableViewController: UITableViewController, UniverseTableViewControllerDelegate {
 
-    let IMPERIAL_SECTION = 0
-    let REBEL_SECTION = 1
-    
- 
     var model: SwiftWarsUniverse?
     var delegate: UniverseTableViewControllerDelegate?
     
@@ -126,6 +127,14 @@ class UniverseTableViewController: UITableViewController, UniverseTableViewContr
             let n = NSNotification(name: CHARACTER_DID_CHANGE_NOTIFICATION_NAME, object: self, userInfo: dict as [NSObject : AnyObject])
             
             nc.postNotification(n)
+            
+            // Y guardo el personaje seleccionado
+            let coords = [indexPath.section, indexPath.row]
+            let userDefs = NSUserDefaults.standardUserDefaults()
+            
+            userDefs.setObject(coords, forKey: LAST_SELECTED_CHARACTER)
+            
+            userDefs.synchronize()
             
         }
         

@@ -17,6 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Comprobamos a ver si existe el ultimo personaje seleccionado
+        let userDefs = NSUserDefaults.standardUserDefaults()
+        let pj: AnyObject? = userDefs.objectForKey(LAST_SELECTED_CHARACTER)
+        if pj == nil{
+            
+            // y si no existe metemos uno por defecto
+            userDefs.setObject([IMPERIAL_SECTION, 0], forKey: LAST_SELECTED_CHARACTER)
+            
+            // y sincronizamos
+            userDefs.synchronize()
+        }
+        
+        
+        
         // Crear la Window
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
  
@@ -49,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var universeVC = UniverseTableViewController(model: model, style: UITableViewStyle.Plain)
         var universeNav = UINavigationController(rootViewController: universeVC)
         
-        var characterVC = CharacterViewController(model: model.imperialAtIndex(0))
+        var characterVC = CharacterViewController(model: lastSelectedCharacterInUniverse(model))
         var characterNav = UINavigationController(rootViewController: characterVC)
         
         
@@ -84,6 +98,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
     }
+    
+    func lastSelectedCharacterInUniverse (universe: SwiftWarsUniverse) -> SwiftWarsCharacter{
+    
+        // Obtengo el NSUSERDEFAULTS
+        let userDefs = NSUserDefaults.standardUserDefaults()
+        
+        // Saco las coordenadas del ultimo personaje
+        let coords: AnyObject? = userDefs.objectForKey(LAST_SELECTED_CHARACTER)
+        let (section: AnyObject?, position: AnyObject?) = (coords?.objectAtIndex(0), coords?.objectAtIndex(1))
+            
+            
+        
+ 
+        // Obtengo el personaje
+        var swCharacter :SwiftWarsCharacter = SwiftWarsCharacter()
+        if let sec: Int = section as? Int, let pos: Int = position as? Int{
+            if sec == IMPERIAL_SECTION{
+                swCharacter = universe.imperialAtIndex(pos)
+            }else{
+                swCharacter = universe.rebelAtIndex(pos)
+            }
+        }
+        
+        // Lo devuelvo
+        return swCharacter;
+    }
+    
     
     
     func applicationWillResignActive(application: UIApplication) {

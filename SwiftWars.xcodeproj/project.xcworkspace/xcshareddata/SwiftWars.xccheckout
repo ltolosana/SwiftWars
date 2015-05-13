@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A5D253BB-5A45-4846-8526-7009B788F052</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SwiftWars</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C971D914B5EC7A43946CC06938F296C4463C0730</key>
+		<string>https://github.com/ltolosana/SwiftWars.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SwiftWars.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C971D914B5EC7A43946CC06938F296C4463C0730</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ltolosana/SwiftWars.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C971D914B5EC7A43946CC06938F296C4463C0730</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C971D914B5EC7A43946CC06938F296C4463C0730</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SwiftWars</string>
+		</dict>
+	</array>
+</dict>
+</plist>
